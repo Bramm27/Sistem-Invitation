@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="{{ asset('user') }}/index.css" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+  </style>
 </head>
 
 <body>
@@ -47,7 +49,13 @@
 
   <section id="button-penerimaan">
     <h2>Event</h2>
+    @if($user->respons == 'Belum ada respon')
     <button id="myBtn" class="text-inv">Click Here confirm your attendance</button>
+    @elseif($user->respons == 'hadir')
+    <button class="text-inv">Qode QR</button>
+    @elseif($user->respons == 'tidak hadir')
+    <button class="text-inv">Anda memilih tidak hadir</button>
+    @endif
     <span>Dresscode: Hitam, Abu-abu, Gold, Merah</span>
     <span>03 February 2025</span>
   </section>
@@ -56,10 +64,19 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>Apakah Anda Yakin Bisa Hadir</h2>
-      <div class="button-container">
-        <button class="btn-hadir">Hadir</button>
-        <button class="btn-tidak-hadir">Tidak Hadir</button>
-      </div>
+      <form action="/statusChange" method="POST" enctype="application/x-www-form-urlencoded">
+        @csrf
+        <!-- Hidden input untuk mengirimkan username atau ID -->
+        <input type="hidden" name="username" value="{{ $user->username }}">
+    
+        <div class="button-container">
+            <!-- Tombol untuk Hadir -->
+            <button type="submit" name="status" value="hadir" class="btn-hadir">Hadir</button>
+    
+            <!-- Tombol untuk Tidak Hadir -->
+            <button type="submit" name="status" value="tidak hadir" class="btn-tidak-hadir">Tidak Hadir</button>
+        </div>
+    </form>
     </div>
   </div>
     <!-- ini yang update (17-01-2025) -->
