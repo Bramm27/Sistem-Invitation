@@ -44,7 +44,7 @@ Route::post('/loginPost', [AuthController::class, 'loginPost']);
     Route::get('/table', [GuestController::class, 'table'])->name('table');
     Route::get('/admin/create', [GuestController::class, 'index']);
     Route::post('/store', [GuestController::class, 'store']);
-    Route::post('/check-in', [CheckInController::class, 'updateStatus']);
+    Route::post('/check-in', [CheckInController::class, 'updateStatus'])->name('guest.checkin');
 // });
 
 
