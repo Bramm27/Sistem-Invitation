@@ -47,4 +47,7 @@ Route::post('/loginPost', [AuthController::class, 'loginPost']);
     Route::post('/check-in', [CheckInController::class, 'updateStatus']);
 // });
 
-Route::get('/invited', [InvitationController::class, 'index']);
+
+
+// Route::get('/invited', [InvitationController::class, 'index']);
+Route::get('/invited/{username}', [InvitationController::class, 'invited']);
