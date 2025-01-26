@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\LinkedtController;
+use App\Http\Controllers\CheckinController;
 use App\Models\Guest;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,7 @@ Route::post('/loginPost', [AuthController::class, 'loginPost']);
     Route::get('/table', [GuestController::class, 'table'])->name('table');
     Route::get('/admin/create', [GuestController::class, 'index']);
     Route::post('/store', [GuestController::class, 'store']);
+    Route::post('/check-in', [CheckInController::class, 'updateStatus']);
 // });
 
 Route::get('/invited', [InvitationController::class, 'index']);

@@ -35,6 +35,7 @@ class GuestController extends Controller
         $guess->name = $request->name;
         $guess->number_phone = $request->number_phone;
         $guess->company_name = $request->company_name;
+        $guess->username = $request->username;
         $guess->respons = "Belum ada respon";
         $guess->check_in = "Belum Check-In";
         $guess->save();
