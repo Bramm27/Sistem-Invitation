@@ -45,4 +45,7 @@ Route::post('/loginPost', [AuthController::class, 'loginPost']);
     Route::post('/store', [GuestController::class, 'store']);
 // });
 
-Route::get('/invited', [InvitationController::class, 'index']);
+
+
+// Route::get('/invited', [InvitationController::class, 'index']);
+Route::get('/invited/{username}', [InvitationController::class, 'invited']);

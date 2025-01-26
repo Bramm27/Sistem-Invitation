@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('company_name');
             $table->string('respons');
             $table->string('check_in');
+            $table->string('username')->unique();
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

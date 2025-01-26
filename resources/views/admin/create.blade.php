@@ -171,6 +171,10 @@
                                         <input type="text" name="company_name" class="form-control"
                                             placeholder="Company" aria-label="" aria-describedby="">
                                     </div>
+                                    <div class="mb-3">
+                                        <input type="text" name="username" class="form-control"
+                                            placeholder="Username" aria-label="" aria-describedby="">
+                                    </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Add Guest</button>
                                     </div>

@@ -31,7 +31,7 @@
 
   <header id="cover">
     <p data-aos="fade">Ring in the New Year with us!</p>
-    <span class="name" data-aos="fade-down">Nama Tamu</span>
+    <span class="name" data-aos="fade-down">{{ $user->name }}</span>
     <p data-aos="fade-up">03.02.2025</p>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave">
       <path fill="#f5f5dc" fill-opacity="1"
