@@ -53,17 +53,26 @@
                                         <td class="align-middle text-center text-sm">
                                             <span
                                                 class="badge badge-sm 
-                                                @if ($person->respons == 'Belum ada respon') bg-gradient-warning 
-                                                @elseif($person->respons == 'Hadir') bg-gradient-success 
-                                                @else bg-gradient-danger @endif">
+            @if ($person->respons == 'Belum ada respon') bg-gradient-warning 
+            @elseif($person->respons == 'Hadir') bg-gradient-success 
+            @else bg-gradient-danger @endif">
                                                 {{ $person->respons }}
                                             </span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal"
-                                                data-bs-target="#checkInModal_{{ $person->id }}">
-                                                Check In
-                                            </button>
+                                            @if ($person->check_in == 'Tamu Hadir' || $person->check_in == 'Tamu Tidak Hadir')
+                                                <!-- Jika sudah check-in, tampilkan status sebagai teks -->
+                                                <span
+                                                    class="badge bg-gradient-{{ $person->check_in == 'Tamu Hadir' ? 'success' : 'danger' }}">
+                                                    {{ $person->check_in }}
+                                                </span>
+                                            @else
+                                                <!-- Jika belum check-in, tampilkan tombol untuk check-in -->
+                                                <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal"
+                                                    data-bs-target="#checkInModal_{{ $person->id }}">
+                                                    Check In
+                                                </button>
+                                            @endif
                                         </td>
                                     </tr>
 
@@ -72,11 +81,13 @@
                                         aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
-                                                <div class="modal-body text-center">
+                                                <div class="modal-header">
                                                     <h5 class="modal-title">Konfirmasi Kehadiran untuk {{ $person->name }}
                                                     </h5>
                                                     <button type="button" class="btn-close"
                                                         data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body text-center">
                                                     <p>Apakah Anda hadir?</p>
                                                     <button class="btn btn-success btnHadir"
                                                         data-id="{{ $person->id }}">Hadir</button>
@@ -96,67 +107,42 @@
     </div>
 @endsection
 @push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // Event delegation untuk tombol Check In dalam tabel yang dimuat secara dinamis
-            $(document).on('click', '.checkInButton', function() {
-                let personId = $(this).data('id');
-                console.log('Person ID:', personId);
+        $(document).on('click', '.btnHadir, .btnTidakHadir', function() {
+            let personId = $(this).data('id');
+            let status = $(this).hasClass('btnHadir') ? 'hadir' : 'tidak hadir'; // Sesuaikan status
 
-                // Set data-id pada button modal
-                $('#btnHadir').attr('data-id', personId);
-                $('#btnTidakHadir').attr('data-id', personId);
+            $.ajax({
+                url: "{{ route('guest.checkin') }}",
+                method: 'POST',
+                data: {
+                    id: personId,
+                    status: status,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    // Cari tombol Check In dan ubah menjadi span dengan status
+                    let button = $('button[data-bs-target="#checkInModal_' + personId + '"]');
+                    button.replaceWith(
+                        `<span class="badge bg-gradient-${status === 'hadir' ? 'success' : 'danger'}">
+                    Tamu ${status === 'hadir' ? 'Hadir' : 'Tidak Hadir'}
+                </span>`
+                    );
 
-                // Menampilkan modal menggunakan Bootstrap API
-                let modal = new bootstrap.Modal(document.getElementById('checkInModal'));
-                modal.show();
-            });
+                    // Menutup modal dengan benar
+                    let modal = $('#checkInModal_' + personId);
+                    modal.modal('hide');
 
-            // AJAX ketika klik tombol "Hadir"
-            $('#btnHadir').on('click', function() {
-                let personId = $(this).attr('data-id');
-
-                $.ajax({
-                    url: '/check-in',
-                    method: 'POST',
-                    data: {
-                        id: personId,
-                        status: 'hadir',
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        alert('Status berhasil diubah menjadi Hadir');
-                        $('#checkInModal').modal('hide');
-                        location.reload(); // Refresh halaman untuk update data
-                    },
-                    error: function() {
-                        alert('Terjadi kesalahan, coba lagi.');
-                    }
-                });
-            });
-
-            // AJAX ketika klik tombol "Tidak Hadir"
-            $('#btnTidakHadir').on('click', function() {
-                let personId = $(this).attr('data-id');
-
-                $.ajax({
-                    url: '/check-in',
-                    method: 'POST',
-                    data: {
-                        id: personId,
-                        status: 'tidak hadir',
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        alert('Status berhasil diubah menjadi Tidak Hadir');
-                        $('#checkInModal').modal('hide');
-                        location.reload(); // Refresh halaman untuk update data
-                    },
-                    error: function() {
-                        alert('Terjadi kesalahan, coba lagi.');
-                    }
-                });
+                    // Menghapus overlay hitam setelah modal ditutup
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                },
+                error: function(xhr) {
+                    // Menangani error jika terjadi masalah
+                    console.error('Terjadi kesalahan:', xhr.responseJSON.message);
+                }
             });
         });
     </script>
