@@ -265,40 +265,34 @@
                             </thead>
                             <tbody>
                                 @foreach ($guests as $confirm)
-
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div>
-                                                <img src="{{ asset('admin') }}/assets/img/team-2.jpg"
-                                                    class="avatar avatar-sm me-3" alt="xd">
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">{{ $confirm->name }}</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="text-xs font-weight-bold">+62 {{ $confirm->number_phone }}</span> 
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <span class="text-xs font-weight-bold">{{ $confirm->company_name }}</span>
-                                    </td>
-                                    <td class="align-middle">
-                                        <div class="progress-wrapper w-75 mx-auto">
-                                            <div class="progress-info">
-                                                <div class="progress-percentage">
-                                                    <span class="text-xs font-weight-bold">60%</span>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div>
+                                                    <img src="{{ asset('admin') }}/assets/img/team-2.jpg"
+                                                        class="avatar avatar-sm me-3" alt="xd">
+                                                </div>
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $confirm->name }}</h6>
                                                 </div>
                                             </div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-info w-60" role="progressbar"
-                                                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
+                                        </td>
+                                        <td>
+                                            <span class="text-xs font-weight-bold">+62 {{ $confirm->number_phone }}</span>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <span class="text-xs font-weight-bold">{{ $confirm->company_name }}</span>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <span
+                                                class="badge badge-sm 
+            @if ($confirm->respons == 'Belum ada respon') bg-gradient-warning 
+            @elseif($confirm->respons == 'hadir') bg-gradient-success 
+            @else bg-gradient-danger @endif">
+                                                {{ $confirm->respons }}
+                                            </span>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

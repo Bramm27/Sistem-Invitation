@@ -27,7 +27,7 @@
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Check-in</th>
-                                    <th class="text-secondary opacity-7"></th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Link Invitation</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,7 +54,7 @@
                                             <span
                                                 class="badge badge-sm 
             @if ($person->respons == 'Belum ada respon') bg-gradient-warning 
-            @elseif($person->respons == 'Hadir') bg-gradient-success 
+            @elseif($person->respons == 'hadir') bg-gradient-success 
             @else bg-gradient-danger @endif">
                                                 {{ $person->respons }}
                                             </span>
@@ -73,6 +73,9 @@
                                                     Check In
                                                 </button>
                                             @endif
+                                        </td>
+                                        <td>
+                                            <a href="http://127.0.0.1:8000/invited/{{ $person->username }}" class="text-xs font-weight-bold mb-0">http://127.0.0.1:8000/invited/{{ $person->username }}</a>
                                         </td>
                                     </tr>
 
