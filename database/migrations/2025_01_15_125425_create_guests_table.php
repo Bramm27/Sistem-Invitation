@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigInteger('number_phone');
             $table->string('company_name');
             $table->string('respons');
-            $table->string('qr_code')->nullable(); 
+            $table->text('qr_code')->nullable(); 
             $table->string('check_in');
             $table->string('username')->unique();
             $table->string('url')->nullable();

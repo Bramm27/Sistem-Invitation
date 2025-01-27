@@ -120,6 +120,34 @@
     width: 90%;
     /* Lebar modal lebih kecil untuk layar kecil */
   }
+
+  #button-penerimaan h2 {
+    margin-top: 10rem;
+    margin-bottom: 6rem !important;
+  }
+
+  .qr-code-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .qr-code {
+    width: 200px !important;
+    /* Ukuran QR Code */
+    height: 200px !important;
+    /* Ukuran QR Code */
+    border: 1px solid #ddd;
+    /* Border (optional) */
+    padding: 10px;
+    /* Padding agar QR code tidak terlalu rapat */
+    background-color: #fff;
+    /* Background warna putih */
+  }
+
+  #penutup .location {
+    margin-top: 0rem !important;
+  }
 }
 
 
@@ -917,5 +945,38 @@ body.dark-mode>section#penutup>section.thank-you>span {
   body>section#penutup>section.location>iframe {
     width: 300px;
     height: 200px;
+  }
+
+  .modal-content {
+    width: 90%;
+    /* Lebar modal lebih kecil untuk layar kecil */
+  }
+
+  #button-penerimaan h2 {
+    margin-top: 10rem;
+    margin-bottom: 6rem !important;
+  }
+
+  .qr-code-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .qr-code {
+    width: 200px !important;
+    /* Ukuran QR Code */
+    height: 200px !important;
+    /* Ukuran QR Code */
+    border: 1px solid #ddd;
+    /* Border (optional) */
+    padding: 10px;
+    /* Padding agar QR code tidak terlalu rapat */
+    background-color: #fff;
+    /* Background warna putih */
+  }
+
+  #penutup .location {
+    margin-top: 0rem !important;
   }
 }
