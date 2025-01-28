@@ -64,6 +64,11 @@
                     <span class="nav-link-text ms-1">Tables</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('logout*') ? 'active' : '' }}" href="{{ route('logout') }}">
+                    <span class="nav-link-text ms-1">Logout</span>
+                </a>
+            </li>
         </ul>
     </div>
     {{-- <div class="sidenav-footer mx-3 ">

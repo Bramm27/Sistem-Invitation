@@ -6,7 +6,9 @@
             <div class="card mb-4">
                 <div class="card-header pb-0 d-flex">
                     <h6>Guest table</h6>
-                    <a href="/admin/create" class="btn btn-primary ms-auto">Add Guest</a>
+                    @if (auth()->check() && auth()->user()->role_id == 1)
+                        <a href="/admin/create" class="btn btn-primary ms-auto">Add Guest</a>
+                    @endif
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
@@ -68,10 +70,12 @@
                                                 </span>
                                             @else
                                                 <!-- Jika belum check-in, tampilkan tombol untuk check-in -->
+                                                @if (auth()->check() && auth()->user()->role_id == 1)
                                                 <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal"
                                                     data-bs-target="#checkInModal_{{ $person->id }}">
                                                     Check In
                                                 </button>
+                                                @endif
                                             @endif
                                         </td>
                                         <td>
