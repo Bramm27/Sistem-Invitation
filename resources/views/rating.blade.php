@@ -11,16 +11,17 @@
     <div class="wrapper">
         <h3>BERIKAN KRITIK DAN SARAN DI BAWAH</h3>
         <!-- Mengirim data dengan metode POST -->
-        <form action="submit.php" method="POST">
+        <form action="/ratingPost" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="rating">
                 <input type="number" name="rating" hidden>
-                <i class="bx bx-star star" style="--i: 0;"></i>
-                <i class="bx bx-star star" style="--i: 1;"></i>
-                <i class="bx bx-star star" style="--i: 2;"></i>
-                <i class="bx bx-star star" style="--i: 3;"></i>
-                <i class="bx bx-star star" style="--i: 4;"></i>
+                <i class="bx bx-star star" name="1" value="1" style="--i: 0;"></i>
+                <i class="bx bx-star star" name="2" value="2" style="--i: 1;"></i>
+                <i class="bx bx-star star" name="3" value="3" style="--i: 2;"></i>
+                <i class="bx bx-star star" name="4" value="4" style="--i: 3;"></i>
+                <i class="bx bx-star star" name="5" value="5" style="--i: 4;"></i>
             </div>
-            <textarea name="pendapat" cols="30" rows="5" placeholder="Pendapat anda..." required></textarea>
+            <textarea name="review" cols="30" rows="5" placeholder="Pendapat anda..." required></textarea>
             <div class="btn-group">
                 <button type="submit" class="btn submit">Submit</button>
                 <button type="button" class="btn cancel" onclick="resetForm()">Cancel</button>

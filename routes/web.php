@@ -60,3 +60,4 @@ Route::get('/invited/{username}', [InvitationController::class, 'invited']);
 
 
 Route::get('/rating', [RatingController::class, 'index']);
+Route::post('/ratingPost', [RatingController::class, 'ratingPost']);
