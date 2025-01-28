@@ -5,6 +5,7 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\LinkedtController;
 use App\Http\Controllers\CheckinController;
+use App\Http\Controllers\RatingController;
 use App\Models\Guest;
 use Illuminate\Support\Facades\Route;
 
@@ -58,3 +59,4 @@ Route::post('/statusChange', [InvitationController::class, 'changeStatus']);
 Route::get('/invited/{username}', [InvitationController::class, 'invited']);
 
 
+Route::get('/rating', [RatingController::class, 'index']);
