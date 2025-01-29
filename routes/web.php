@@ -48,6 +48,7 @@ Route::post('/registerPost', [AuthController::class, 'registerPost'])->name('reg
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [GuestController::class, 'dashboard'])->name('dashboard');
     Route::get('/table', [GuestController::class, 'table'])->name('table');
+    Route::get('/review', [RatingController::class, 'review'])->name('review');
     Route::get('/admin/create', [GuestController::class, 'index']);
     Route::post('/store', [GuestController::class, 'store']);
     Route::post('/check-in', [CheckInController::class, 'updateStatus'])->name('guest.checkin');

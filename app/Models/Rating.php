@@ -10,4 +10,6 @@ class Rating extends Model
     use HasFactory;
     protected $table = 'ratings';
     protected $guarded = ['id'];
+
+    protected $fillable = ['review', 'rating'];
 }

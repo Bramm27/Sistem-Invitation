@@ -229,7 +229,7 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('admin') }}/assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
     @stack('scripts')
-</body>1
+</body>
 
 
 

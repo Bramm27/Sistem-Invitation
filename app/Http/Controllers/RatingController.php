@@ -11,6 +11,12 @@ class RatingController extends Controller
         return view('rating');
     }
 
+    public function review()
+    {
+        $reviews = Rating::latest()->get(); // Ambil semua review dari database
+        return view('admin.review', compact('reviews'));
+    }
+
     public function ratingPost(Request $request) {
         $rating = new Rating();
         $rating->review = $request->review;
