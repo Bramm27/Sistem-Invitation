@@ -8,12 +8,12 @@
 }
 
 :root {
-	--yellow: #FFBD13;
-	--blue: #4383FF;
-	--blue-d-1: #3278FF;
-	--light: #F5F5F5;
+	--yellow: #a0522d;
+	--blue: #deb887;
+	--blue-d-1: #deb887;
+	--light: #5e4a32;
 	--grey: #AAA;
-	--white: #FFF;
+	--white: #f5f5dc;
 	--shadow: 8px 8px 30px rgba(0,0,0,.05);
 }
 
@@ -32,7 +32,7 @@ body {
 
 
 .wrapper {
-	background: var(--white);
+	background: #d2b48c;
 	padding: 2rem;
 	max-width: 576px;
 	width: 100%;
@@ -44,6 +44,7 @@ body {
 	font-size: 1.5rem;
 	font-weight: 600;
 	margin-bottom: 1rem;
+	color: #222;
 }
 .rating {
 	display: flex;
@@ -51,7 +52,7 @@ body {
 	align-items: center;
 	grid-gap: .5rem;
 	font-size: 2rem;
-	color: var(--yellow);
+	color: #a0522d;
 	margin-bottom: 2rem;
 }
 .rating .star {
@@ -83,7 +84,7 @@ body {
 }
 textarea {
 	width: 100%;
-	background: var(--light);
+	background: var(--white);
 	padding: 1rem;
 	border-radius: .5rem;
 	border: none;
@@ -106,16 +107,17 @@ textarea {
 	font-weight: 500;
 }
 .btn-group .btn.submit {
-	background: var(--blue);
+	background: #a0522d;
 	color: var(--white);
 }
 .btn-group .btn.submit:hover {
-	background: var(--blue-d-1);
+	background: #8b4513;
 }
 .btn-group .btn.cancel {
 	background: var(--white);
-	color: var(--blue);
+	color: #8b4513;
 }
 .btn-group .btn.cancel:hover {
 	background: var(--light);
+	color: #f5f5dc;
 }

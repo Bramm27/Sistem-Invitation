@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <h3>BERIKAN KRITIK DAN SARAN DI BAWAH</h3>
+        <h3>Kritik & Saran</h3>
         <!-- Mengirim data dengan metode POST -->
         <form action="/ratingPost" method="POST" enctype="multipart/form-data">
             @csrf
