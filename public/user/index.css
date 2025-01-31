@@ -431,7 +431,7 @@ body>header#cover::before {
 }
 
 body>header#cover span.name {
-  font-family: "AlexBrush";
+  font-family: "Hello";
   font-size: 8vh;
   font-weight: bold;
   z-index: 2;

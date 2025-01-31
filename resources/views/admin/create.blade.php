@@ -163,8 +163,8 @@
                                             aria-label="Name" aria-describedby="email-addon">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" name="number_phone" class="form-control"
-                                            placeholder="No. Handphone" aria-label="Email"
+                                        <input type="text" name="iduka_prodi" class="form-control"
+                                            placeholder="Iduka Prodi"
                                             aria-describedby="email-addon">
                                     </div>
                                     <div class="mb-3">

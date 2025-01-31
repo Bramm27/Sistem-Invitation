@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('guests', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('number_phone');
+            $table->bigInteger('number_phone')->nullable();
+            $table->string('iduka_prodi')->nullable();
             $table->string('company_name');
             $table->string('respons');
             $table->text('qr_code')->nullable(); 

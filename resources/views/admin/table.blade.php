@@ -22,7 +22,7 @@
                                         Name
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        No. Handphone</th>
+                                        Iduka Prodi</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Status</th>
@@ -50,7 +50,7 @@
                                             <p class="text-xs font-weight-bold mb-0">{{ $person->company_name }}</p>
                                         </td>
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">+62 {{ $person->number_phone }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $person->iduka_prodi }}</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span
