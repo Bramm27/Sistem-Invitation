@@ -95,7 +95,7 @@
                                                         data-bs-dismiss="modal"></button>
                                                 </div>
                                                 <div class="modal-body text-center">
-                                                    <p>Apakah Anda hadir?</p>
+                                                    <p>Apakah tamu ini sudah hadir?</p>
                                                     <button class="btn btn-success btnHadir"
                                                         data-id="{{ $person->id }}">Hadir</button>
                                                     <button class="btn btn-danger btnTidakHadir"
